@@ -1,4 +1,4 @@
-# MakeCode Extension for ESP8266 Wifi Modules and ThingSpeak IoT Analytics Platform
+# MakeCode Extension for ESP8266 Wifi Modules and ThingSpeak IoT Platform
 
 This extension/package is modified from [elecfreaks/pxt-esp8266iot](https://github.com/elecfreaks/pxt-esp8266iot), also derived from [my first modification](https://github.com/alankrantas/pxt-esp8266iot). This version has less blocks and checks the AT responses whenever the ESP8266 tries to connect Wifi, ThingSpeak as well as uplolding data.
 
@@ -12,7 +12,7 @@ You need a account and a channel on [ThingSpeak](https://thingspeak.com/) to get
 
 Connect VCC and CH to 3.3V (sufficint power needed; the power from micro:bit's USB cable is NOT ENOUGH), GND to GND, RX and TX to two I/O pins, ignore the rest. See [here](https://components101.com/wireless/esp8266-pinout-configuration-features-datasheet) for more details.
 
-You can also add a USB-to-TTL module to read AT responses from your ESP8266 via terminal on your computer:
+You can also add a USB-to-TTL module to read AT responses from your ESP8266 via terminal on your computer: (The LED is not needed)
 
 ![microbit_esp8266_ArNB60xdJd](https://user-images.githubusercontent.com/44191076/57862847-9c235980-782b-11e9-9588-3e7fe76342ee.png)
 
