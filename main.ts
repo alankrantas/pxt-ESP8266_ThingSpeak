@@ -33,9 +33,14 @@ namespace ESP8266_ThingSpeak {
         return result
     }
 
+    /**
+    * Initialize ESP8266 module and connect to your Wifi router
+    */
     //% block="Initialize ESP8266|TX %tx|RX %rx|baud rate %baudrate|Wifi SSID = %ssid|Wifi PW = %pw"
     //% tx.defl=SerialPin.P0
     //% rx.defl=SerialPin.P1
+    //% ssid.defl=your_ssid
+    //% pw.defl=your_pw
     export function initialize_wifi(tx: SerialPin, rx: SerialPin, baudrate: BaudRate, ssid: string, pw: string) {
         wifi_connected = false
         thingspeak_connected = false
@@ -44,49 +49,65 @@ namespace ESP8266_ThingSpeak {
             rx,
             baudrate
         )
-        sendAT("AT+RESTORE", 1000)
-        sendAT("AT+CWMODE=1")
-        sendAT("AT+RST", 1000)
-        sendAT("AT+CWJAP=\"" + ssid + "\",\"" + pw + "\"", 0)
+        sendAT("AT+RESTORE", 1000) // restore to factory settings
+        sendAT("AT+CWMODE=1") // set to STA mode
+        sendAT("AT+RST", 1000) // reset
+        sendAT("AT+CWJAP=\"" + ssid + "\",\"" + pw + "\"", 0) // connect to Wifi router
         wifi_connected = wait_for_response()
         basic.pause(100)
     }
 
+    /**
+    * Connect to ThingSpeak and upload data
+    */
     //% block="Upload data to ThingSpeak|URL/IP = %ip|Write API key = %write_api_key|Field 1 = %n1|Field 2 = %n2|Field 3 = %n3|Field 4 = %n4|Field 5 = %n5|Field 6 = %n6|Field 7 = %n7|Field 8 = %n8"
     //% ip.defl=api.thingspeak.com
+    //% write_api_key.defl=your_write_api_key
     export function connect_thingspeak(ip: string, write_api_key: string, n1: number, n2: number, n3: number, n4: number, n5: number, n6: number, n7: number, n8: number) {
         if (wifi_connected && write_api_key != "") {
             thingspeak_connected = false
-            sendAT("AT+CIPSTART=\"TCP\",\"" + ip + "\",80", 0)
+            sendAT("AT+CIPSTART=\"TCP\",\"" + ip + "\",80", 0) // connect to website server
             thingspeak_connected = wait_for_response()
             basic.pause(100)
             if (thingspeak_connected) {
                 last_upload_successful = false
                 let str: string = "GET /update?api_key=" + write_api_key + "&field1=" + n1 + "&field2=" + n2 + "&field3=" + n3 + "&field4=" + n4 + "&field5=" + n5 + "&field6=" + n6 + "&field7=" + n7 + "&field8=" + n8
                 sendAT("AT+CIPSEND=" + (str.length + 2))
-                sendAT(str, 0)
+                sendAT(str, 0) // upload data
                 last_upload_successful = wait_for_response()
                 basic.pause(100)
             }
         }
     }
 
+    /**
+    * Wait between uploads
+    */
     //% block="Wait %delay ms"
     //% delay.min=0 delay.defl=5000
     export function wait(delay: number) {
         if (delay > 0) basic.pause(delay)
     }
 
+    /**
+    * Check if ESP8266 successfully connected to Wifi router
+    */
     //% block="Wifi connected ?"
     export function is_wifi_connected() {
         return wifi_connected
     }
 
+    /**
+    * Check if ESP8266 successfully connected to ThingSpeak
+    */
     //% block="ThingSpeak connected ?"
     export function is_ThingSpeak_connected() {
         return thingspeak_connected
     }
 
+    /**
+    * Check if ESP8266 successfully uploaded data to ThingSpeak
+    */
     //% block="Last upload successful ?"
     export function is_last_upload_successful() {
         return last_upload_successful
