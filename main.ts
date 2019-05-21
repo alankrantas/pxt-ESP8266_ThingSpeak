@@ -36,7 +36,7 @@ namespace ESP8266_ThingSpeak {
     /**
     * Initialize ESP8266 module and connect to your Wifi router
     */
-    //% block="Initialize ESP8266|RX %tx|TX %rx|baud rate %baudrate|Wifi SSID = %ssid|Wifi PW = %pw"
+    //% block="Initialize ESP8266|RX (Tx of micro:bit) %tx|TX (Rx of micro:bit) %rx|Baud rate %baudrate|Wifi SSID = %ssid|Wifi PW = %pw"
     //% tx.defl=SerialPin.P0
     //% rx.defl=SerialPin.P1
     //% ssid.defl=your_ssid
