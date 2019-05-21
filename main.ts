@@ -28,7 +28,7 @@ namespace ESP8266_ThingSpeak {
             } else if (serial_str.includes("ERROR") || serial_str.includes("SEND FAIL")) {
                 break
             }
-            if (input.runningTime() - time > 300000) break
+            if (input.runningTime() - time > 30000) break
         }
         return result
     }
