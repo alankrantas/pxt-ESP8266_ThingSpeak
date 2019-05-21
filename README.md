@@ -1,12 +1,13 @@
 # MakeCode Extension for ESP8266 Wifi Modules and ThingSpeak IoT Platform
 
+![pctdetail 775-090 1](https://user-images.githubusercontent.com/44191076/50425186-76ada780-08ac-11e9-956c-9ebd6be09bb2.jpg)
+![92153_wm_logo](https://user-images.githubusercontent.com/44191076/58067910-d68d4d80-7bc1-11e9-9ea8-5605837dd5d5.png)
+
 This extension/package is heavily modified from [elecfreaks/pxt-esp8266iot](https://github.com/elecfreaks/pxt-esp8266iot), also derived from [my first modification](https://github.com/alankrantas/pxt-esp8266iot) and my [micro:bit web server project](https://www.hackster.io/alankrantas/wifi-web-server-on-bbc-micro-bit-and-esp-01-esp8266-498e0d). This version has less blocks and checks the AT responses whenever the ESP8266 tries to connect Wifi, ThingSpeak as well as uplolding data.
 
 This extension is primary targeted for ESP-01/ESP-01S or similar [ESP8266](https://github.com/esp8266/esp8266-wiki/wiki) Wifi modules loaded with factory firmware, so that you can make ThingSpeak IoT projects on [BBC micro:bits](https://microbit.org/).
 
 You need a account and a channel on [ThingSpeak](https://thingspeak.com/) to get the write API key. Please do not share your Wifi and API info online.
-
-![pctdetail 775-090 1](https://user-images.githubusercontent.com/44191076/50425186-76ada780-08ac-11e9-956c-9ebd6be09bb2.jpg)
 
 ## Wiring
 
