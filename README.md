@@ -7,14 +7,21 @@ This extension is primary targeted for ESP-01/ESP-01S or similar [ESP8266](https
 You need a account and a channel on [ThingSpeak](https://thingspeak.com/) to get the write API key. Please do not share your Wifi and API info online.
 
 ![pctdetail 775-090 1](https://user-images.githubusercontent.com/44191076/50425186-76ada780-08ac-11e9-956c-9ebd6be09bb2.jpg)
-![esp8266-pinout](https://user-images.githubusercontent.com/44191076/50428909-fc097a00-08f5-11e9-91f1-921d1b957f29.png)
-![esp8266_bb](https://user-images.githubusercontent.com/44191076/50541952-e513a200-0beb-11e9-9820-05f6798b2044.png)
 
-Connect VCC and CH to 3.3V (sufficint power, about 200-400 mA is needed; the power from micro:bit's USB port alone is NOT ENOUGH), GND to GND, RX and TX to two I/O pins, ignore the rest. See [here](https://components101.com/wireless/esp8266-pinout-configuration-features-datasheet) for more details. Sometimes you might need to unplug and re-plug power to power up the ESP8266 properly.
+## Wiring
+
+![esp8266-pinout](https://user-images.githubusercontent.com/44191076/50428909-fc097a00-08f5-11e9-91f1-921d1b957f29.png)
+
+Connect VCC and CH to 3.3V (sufficint power needed, about 200-400 mA at least; the power from micro:bit's USB port alone is NOT ENOUGH), GND to GND, TX (transmit) and RX (receive) to two I/O pins, ignore the rest. See [here](https://components101.com/wireless/esp8266-pinout-configuration-features-datasheet) for more details. Sometimes you might need to unplug and re-plug power to power up the ESP8266 properly.
 
 You can also add a USB-to-TTL module to read AT responses from your ESP8266 via terminal on your computer: (The LED is not needed)
 
 ![microbit_esp8266_ArNB60xdJd](https://user-images.githubusercontent.com/44191076/57862847-9c235980-782b-11e9-9588-3e7fe76342ee.png)
+
+Noted that the Tx and Rx in the picture above represents the reassigned serial port pins of micro:bit:
+
+* Tx of micro:bit -> Rx of ESP8266
+* Rx of micro:bit -> Tx of ESP8266
 
 ## Sample Code
 
@@ -24,7 +31,7 @@ If it failed to connect to Wifi, the update block would do nothing. If the updat
 
 Is is recommended to wait several seconds between each update. It's normal that not every update attempt will be successful.
 
-![microbit-screenshot](https://user-images.githubusercontent.com/44191076/57862632-42bb2a80-782b-11e9-8031-05145d642791.png)
+![microbit-screenshot](https://user-images.githubusercontent.com/44191076/58063851-835fce80-7bb2-11e9-95f3-485384aa4a95.png)
 
 ```
 ESP8266_ThingSpeak.initialize_wifi(
