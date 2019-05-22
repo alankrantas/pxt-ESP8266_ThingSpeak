@@ -13,9 +13,9 @@ You need a account and a channel on [ThingSpeak](https://thingspeak.com/) to get
 
 ![esp8266-pinout](https://user-images.githubusercontent.com/44191076/50428909-fc097a00-08f5-11e9-91f1-921d1b957f29.png)
 
-Connect VCC and CH to 3.3V (sufficint power needed, about 200-400 mA at least; the power from micro:bit's USB port alone is NOT ENOUGH), GND to GND, TX (transmit) and RX (receive) to two I/O pins, ignore the rest. See [here](https://components101.com/wireless/esp8266-pinout-configuration-features-datasheet) for more details. Sometimes you might need to unplug and re-plug power to power up the ESP8266 properly.
+Connect VCC and CH to 3.3V (sufficint power needed, about 200-400 mA at least; the power from micro:bit's USB port alone is NOT ENOUGH), GND to GND, TX (transmit) and RX (receive) to two I/O pins, ignore the rest. See [here](https://components101.com/wireless/esp8266-pinout-configuration-features-datasheet) for more details. Sometimes you might also need to unplug and re-plug power to start up the ESP8266 properly.
 
-You can also add a USB-to-TTL module to read AT responses from your ESP8266 via terminal on your computer: (The LED is not needed)
+You can also add a USB-to-TTL module to read full AT responses from your ESP8266 via terminal software on your computer: (The LED in the circuit is not needed)
 
 ![microbit_esp8266_ArNB60xdJd](https://user-images.githubusercontent.com/44191076/57862847-9c235980-782b-11e9-9588-3e7fe76342ee.png)
 
@@ -28,14 +28,14 @@ Noted that the Tx and Rx in the picture above represents the reassigned serial p
 
 Use initialize block to connect to your Wifi router, and use upload block to update data to your channel on ThingSpeak.
 
-If it failed to connect to Wifi, the update block would do nothing. If the update block failed to connect to ThingSpeak, it would not send the data.
+If it failed to connect to Wifi in the first place, the update block would do nothing. If the update block failed to connect to ThingSpeak first, it would not send the data. You can use other blocks to check the status.
 
-Is is recommended to wait several seconds between each update. It's normal that not every update attempt will be successful.
+Is is also recommended to wait several seconds between each update. Not every connect or update attempt would be successful on ThingSpeak.
 
-![microbit-screenshot](https://user-images.githubusercontent.com/44191076/58063851-835fce80-7bb2-11e9-95f3-485384aa4a95.png)
+![microbit-screenshot](https://user-images.githubusercontent.com/44191076/58189752-a642cd80-7ced-11e9-8557-3be87aa795fa.png)
 
 ```
-ESP8266_ThingSpeak.initialize_wifi(
+ESP8266_ThingSpeak.connectWifi(
 SerialPin.P0,
 SerialPin.P1,
 BaudRate.BaudRate115200,
@@ -43,9 +43,9 @@ BaudRate.BaudRate115200,
 "your_pw"
 )
 basic.forever(function () {
-    ESP8266_ThingSpeak.connect_thingspeak(
+    ESP8266_ThingSpeak.connectThingSpeak(
     "api.thingspeak.com",
-    "your_API_key",
+    "your_write_api_key",
     0,
     0,
     0,
@@ -57,6 +57,7 @@ basic.forever(function () {
     )
     ESP8266_ThingSpeak.wait(5000)
 })
+
 ```
 
 In the pic below is the test result of uploading analog readings of MQ7/MQ2 sensors.
