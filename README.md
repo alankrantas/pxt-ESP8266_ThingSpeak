@@ -34,7 +34,7 @@ Is is also recommended to wait several seconds between each update. Not every co
 
 ![microbit-screenshot](https://user-images.githubusercontent.com/44191076/58189752-a642cd80-7ced-11e9-8557-3be87aa795fa.png)
 
-```
+```blocks
 ESP8266_ThingSpeak.connectWifi(
 SerialPin.P0,
 SerialPin.P1,
@@ -57,7 +57,6 @@ basic.forever(function () {
     )
     ESP8266_ThingSpeak.wait(5000)
 })
-
 ```
 
 In the pic below is the test result of uploading analog readings of MQ7/MQ2 sensors.
