@@ -11,17 +11,17 @@ You need a account and a channel on [ThingSpeak](https://thingspeak.com/) to get
 
 # Note to Users
 
-This extension/driver is designed for AI-Thinker ESP-01/ESP-01S ESP8266 boards with their (older) default AT firmwares, which dated from around 2014-2016. I have tested it with regular ESP8266 boards flashed with up-to-date AT firmwares, and it works to some extent. Maybe later I will write a new and simplified extension for it.
+This extension/driver is designed for **AI-Thinker ESP-01/ESP-01S** ESP8266 boards with their (older) default AT firmwares, which are dated from around 2014-2016. I have tested it with regular ESP8266 boards flashed with up-to-date AT firmwares, and it works to some extent. Maybe later I will write a new and simplified extension for it.
 
-To be honest, using an external WiFi chip with micro:bit is not an elegent solution. There's simply too many factors can go wrong in both hardware and software. The only way to see what's wrong is to use a USB-to-TTL cable or module to read the AT responses directly on your computer.
+To be honest, using an external WiFi chip with micro:bit is not an elegent solution. There's simply too many factors can go wrong in both hardware and software. The only way to see what's wrong is using an USB-to-TTL cable or module (most of the products should work) to read the AT responses directly from your computer.
 
-Please be noted that this is more like an experiment to bring IoT project to micro:bit, and very possibly outdated/unusable for more recent products. I would say using a ESP8266 (NodeMCU or D1 mini, etc) with standard MicroPython would be a easier choice to make IoT projects.
+Please beware that this is more like an experiment to bring IoT project to micro:bit, and very possibly outdated/unusable for more recent products. I would say using a ESP8266 (NodeMCU or D1 mini, etc) with standard MicroPython would be a easier choice to make IoT projects.
 
 Now, some common questions people sent me:
 
 Q: <i>Why it didn't work for me? Can you hepl me? I need this for my own project!!!</i>
 
-A: Unless I have the same hardware and you had read the AT responses to know what's wrong (which people never did), I don't have time to guess every single one of the possibility. And don't even try to trick me/hint that I should do free work for you ASAP.
+A: Unless I have the same hardware and you had read the AT responses to know what's wrong (which people never did), I don't have time to guess every single one of the possibility. And please don't try to trick me/hint that I should do free work for you ASAP.
 
 Q: <i>Can you modify the code so that I can ___ ?</i>
 
