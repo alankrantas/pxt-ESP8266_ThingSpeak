@@ -9,6 +9,28 @@ This extension is primary targeted for ESP-01/ESP-01S or similar [ESP8266](https
 
 You need a account and a channel on [ThingSpeak](https://thingspeak.com/) to get the write API key. Please do not share your Wifi and API info online.
 
+# Note to Users
+
+This extension/driver is designed for AI-Thinker ESP-01/ESP-01S ESP8266 boards with their (older) default AT firmwares, which dated from around 2014-2016. I have tested it with regular ESP8266 boards flashed with up-to-date AT firmwares, and it works to some extent. Maybe later I will write a new and simplified extension for it.
+
+To be honest, using an external WiFi chip with micro:bit is not an elegent solution. There's simply too many factors can go wrong in both hardware and software. The only way to see what's wrong is to use a USB-to-TTL cable or module to read the AT responses directly on your computer.
+
+Please be noted that this is more like an experiment to bring IoT project to micro:bit, and very possibly outdated/unusable for more recent products. I would say using a ESP8266 (NodeMCU or D1 mini, etc) with standard MicroPython would be a easier choice to make IoT projects.
+
+Now, some common questions people sent me:
+
+Q: <i>Why it didn't work for me? Can you hepl me? I need this for my own project!!!</i>
+
+A: Unless I have the same hardware and you had read the AT responses to know what's wrong (which people never did), I don't have time to guess every single one of the possibility. And don't even try to trick me/hint that I should do free work for you ASAP.
+
+Q: <i>Can you modify the code so that I can ___ ?</i>
+
+A: This extension is for everyone and might be currently used by some people. I won't modify it for your own purpose unless you have found serious bugs that I can confirm/repeat and fix. You are welcome to fork it and modify it yourself though. You can import your own extension with its Github URL in the MakeCode editor.
+
+Q: <i>Can you modify the code so that I can receive data from ThinkSpeak or somewhere?</i>
+
+A: No, because receiving and parsing incoming raw HTTP data would be more diffcult and messy to implement with MakeCode blocks. Again, it would be far more easier to use regular ESP8266 boards with MicroPython.
+
 ## Wiring
 
 ![esp8266-pinout](https://user-images.githubusercontent.com/44191076/50428909-fc097a00-08f5-11e9-91f1-921d1b957f29.png)
